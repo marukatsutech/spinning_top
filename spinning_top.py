@@ -31,6 +31,7 @@ def set_tilt(value):
     # update
     reset()
     update_diagram()
+    draw_pass_spin()
 
 
 def set_spin_h(value):
@@ -38,6 +39,7 @@ def set_spin_h(value):
     rot_handle_arrow = int(value)
     reset()
     update_diagram()
+    draw_pass_spin()
 
 
 def set_spin_b(value):
@@ -45,6 +47,7 @@ def set_spin_b(value):
     rot_body_arrow = int(value)
     reset()
     update_diagram()
+    draw_pass_spin()
 
 
 def draw_pass_spin():
@@ -75,7 +78,6 @@ def draw_pass_spin():
 def update_diagram():
     global plt_body_circle, theta_rad_handle_arrow_anim, theta_rad_body_arrow_anim
     global qvr_handle_arrow, qvr_body_arrow
-    draw_pass_spin()
     # Rotation matrix (z axis, y axis)
     rot_matrix_z = Rotation.from_rotvec(theta_rad_handle_arrow_anim * vector_z_axis)
     # Rotate body circle
@@ -225,7 +227,7 @@ plt_body_arrow_pass, = ax0.plot(np.array(x_body_arrow_pass), np.array(y_body_arr
                                 np.array(z_body_arrow_pass), color='red', linewidth=1, linestyle='-')
 
 # Guide circle
-angle_body_circle = np.arange(0., 360., 1.)
+angle_body_circle = np.arange(0., 360., 6.)
 x_body_circle = np.cos(angle_body_circle * np.pi / 180.)
 y_body_circle = np.sin(angle_body_circle * np.pi / 180.)
 z_body_circle = angle_body_circle * 0.
@@ -233,7 +235,7 @@ plt_body_circle, = ax0.plot(x_body_circle, y_body_circle, z_body_circle, linewid
                             c='green', alpha=0.5)
 
 # Guide circle handle
-angle_body_circle = np.arange(0., 360., 1.)
+angle_body_circle = np.arange(0., 360., 6.)
 x_guide_circle_h = 0. * np.cos(angle_body_circle * np.pi / 180.)
 y_guide_circle_h = 0. * np.sin(angle_body_circle * np.pi / 180.)
 z_guide_circle_h = angle_body_circle * 0.
@@ -254,6 +256,7 @@ qvr_body_arrow = ax0.quiver(x1_, y1_, z1_, u1_, v1_, w1_, length=1, color='red',
 
 # Draw initial diagram
 update_diagram()
+draw_pass_spin()
 
 # Embed in Tkinter
 root = tk.Tk()
@@ -304,5 +307,5 @@ spn_tilt = tk.Spinbox(
 spn_tilt.pack()
 
 # main loop
-anim = animation.FuncAnimation(fig, update, interval=50)
+anim = animation.FuncAnimation(fig, update, interval=100)
 root.mainloop()
