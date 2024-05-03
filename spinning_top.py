@@ -307,5 +307,5 @@ spn_tilt = tk.Spinbox(
 spn_tilt.pack()
 
 # main loop
-anim = animation.FuncAnimation(fig, update, interval=100)
+anim = animation.FuncAnimation(fig, update, interval=100, save_count=100)
 root.mainloop()
