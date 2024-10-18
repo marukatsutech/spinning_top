@@ -280,7 +280,7 @@ lbl_spin_h.pack()
 var_spin_h = tk.StringVar(root)  # variable for spinbox-value
 var_spin_h.set(rot_handle_arrow)  # Initial value
 spn_spin_h = tk.Spinbox(
-    frm_spin, textvariable=var_spin_h, from_=0, to=8, increment=1,
+    frm_spin, textvariable=var_spin_h, from_=-8, to=8, increment=1,
     command=lambda: set_spin_h(var_spin_h.get()), width=6
 )
 spn_spin_h.pack()
@@ -289,7 +289,7 @@ lbl_spin_b.pack()
 var_spin_b = tk.StringVar(root)  # variable for spinbox-value
 var_spin_b.set(rot_body_arrow)  # Initial value
 spn_spin_b = tk.Spinbox(
-    frm_spin, textvariable=var_spin_b, from_=0, to=8, increment=1,
+    frm_spin, textvariable=var_spin_b, from_=-8, to=8, increment=1,
     command=lambda: set_spin_b(var_spin_b.get()), width=6
 )
 spn_spin_b.pack()
