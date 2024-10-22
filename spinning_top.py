@@ -300,7 +300,7 @@ lbl_tilt.pack()
 var_tilt = tk.StringVar(root)  # variable for spinbox-value
 var_tilt.set(tilt_angle_deg)  # Initial value
 spn_tilt = tk.Spinbox(
-    frm_tilt, textvariable=var_tilt, from_=0., to=180., increment=1,
+    frm_tilt, textvariable=var_tilt, from_=-180., to=180., increment=1,
     command=lambda: set_tilt(var_tilt.get()), width=6
 )
 spn_tilt.pack()
